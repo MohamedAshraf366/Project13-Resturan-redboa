@@ -1,0 +1,132 @@
+import { memo, useEffect, useState } from "react";
+
+let Comment = () => {
+  const [formData, setFormData] = useState({ fName: "", email: "", textArea: "" });
+  const [comments, setComments] = useState([]);
+
+  // تحميل الكومنتات من localStorage أول ما الصفحة تفتح
+  useEffect(() => {
+    const storedComments = JSON.parse(localStorage.getItem("comments")) || [];
+    setComments(storedComments);
+  }, []);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const addComment = (e) => {
+    e.preventDefault();
+
+    if (
+      !formData.fName.trim() ||
+      !formData.email.trim() ||
+      !formData.textArea.trim()
+    ) {
+      alert("Please fill in all fields.");
+      return;
+    }
+
+    const newComment = {
+      id: Date.now(),
+      name: formData.fName,
+      email: formData.email,
+      text: formData.textArea,
+    };
+
+    const updatedComments = [newComment, ...comments];
+
+    // تخزين في localStorage
+    localStorage.setItem("comments", JSON.stringify(updatedComments));
+
+    // تحديث الحالة
+    setComments(updatedComments);
+
+    // تفريغ الفورم
+    setFormData({ fName: "", email: "", textArea: "" });
+  };
+
+  return (
+    <>
+      <h1 className="font-pirate">Comments</h1>
+
+      {/* عرض الكومنتات */}
+      <div className="mb-5">
+        {comments.length === 0 ? (
+          <p>No comments yet.</p>
+        ) : (
+          comments.map((comment) => (
+            <div key={comment.id} className="mb-3 p-3 border rounded bg-light">
+              <strong>{comment.name}</strong> (<small>{comment.email}</small>)
+              <p>{comment.text}</p>
+            </div>
+          ))
+        )}
+      </div>
+
+      <h1 className="font-pirate">Leave Your Comment</h1>
+      <form className="" onSubmit={addComment}>
+        <div className="row gy-3">
+          <div className="col-md-6">
+            <div className="form-floating ">
+              <input
+                name="fName"
+                onChange={handleChange}
+                value={formData.fName}
+                type="text"
+                className="form-control"
+                id="floatingName"
+                placeholder="Name"
+              />
+              <label htmlFor="floatingName">Name</label>
+            </div>
+          </div>
+
+          <div className="col-md-6">
+            <div className="form-floating ">
+              <input
+                name="email"
+                onChange={handleChange}
+                value={formData.email}
+                type="email"
+                className="form-control"
+                id="floatingEmail"
+                placeholder="name@example.com"
+              />
+              <label htmlFor="floatingEmail">Email address</label>
+            </div>
+          </div>
+
+          <div className="col-md-12">
+            <div className="form-floating">
+              <textarea
+                name="textArea"
+                onChange={handleChange}
+                value={formData.textArea}
+                className="form-control"
+                placeholder="Leave a comment here"
+                id="floatingTextarea2"
+                style={{ height: "150px" }}
+              ></textarea>
+              <label htmlFor="floatingTextarea2">Comments</label>
+            </div>
+          </div>
+
+          <div className="col-md-12">
+            <button
+              className="ms-3 text-white bg-99 mt-3 border-0 p-2 rounded-2 w-50"
+              type="submit"
+            >
+              Post Your Comment
+            </button>
+          </div>
+        </div>
+      </form>
+      <br />
+      <br />
+      <br />
+      <br />
+    </>
+  );
+};
+
+export default memo(Comment);

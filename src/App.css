@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Pirata+One&display=swap');
+a{
+    text-decoration: none;
+}
+.font-pirate {
+    font-family: 'Pirata One', sans-serif !important;
+  font-style: normal;   
+}
+.text-99{
+    color:#991B1F;
+}
+.bg-99{
+    background-color:#991B1F;
+}
+.offcanvas-body a{
+    text-decoration: none;
+    color: black;
+    line-height: 44px;
+    text-transform: uppercase;
+    
+}
+/* ///////////////////////////////////////////////////////////////////////////////////////////////// */
+/* App.jsx */
+.leftSideShadow{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+.header-show-small{
+    display: none;
+}
+/* ///////////////////////////////////////////////////////////////////////////////////////////////// */
+/* Home.jsx */
+.btnChangeHover {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #991B1F;
+    color: white;
+    background: linear-gradient(90deg, #991B1F 0%, #991B1F 50%, black 0%);
+    background-size: 200% 100%;
+    transition: background-position 0.5s ease-in-out, color 0.3s ease-in-out;
+}
+
+.btnChangeHover:hover {
+    background-position: -100% 0;
+    color: white;
+}
+.carousel-indicators button.active{
+    background-color: #991B1F !important;   
+}
+.carousel-indicators button:hover{
+    background-color: #991B1F !important;   
+}
+/* ///////////////////////////////////////////////////////////////////////////////////////////////// */
+/* aboutUs.jsx */
+.aboutUs{
+    width: 80%;
+    margin-top: 70px;
+}
+.aboutUs .iamge1{
+    overflow: hidden;
+}
+.aboutUs .iamge1:hover img{
+    transform: scale(1.1);
+    transition: 1s ease-in;
+}
+/* ///////////////////////////////////////////////////////////////////////////////////////////////// */
+/* Meny.jsx */
+.menu{
+    background-image: url('../public/menu1.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+.menu .menuuu{ 
+    min-height: 100%;
+    background-color: #35353577;
+}
+.menu .menu-header span{
+    border-bottom: 3px solid #991B1F;
+}
+.menu .menu-body-type{
+    border-bottom: 4px dashed #991B1F;
+}
+.menu .menu-choose.active {
+    color: #991B1F;
+    font-weight: bolder;
+}
+.menu .slick-dots button{
+    display: none;
+}
+/* ///////////////////////////////////////////////////////////////////////////////////////////////// */
+/* gallery.jsx */
+.gallery .gallery-body h1{
+    transform: translateY(-30px);
+    opacity: 0;
+}
+.gallery .gallery-body .gallery-body-card{
+    overflow: hidden;
+}
+.gallery .gallery-body .gallery-body-card:hover h1 {
+    animation: galleryBodyCard 0.5s ease-in-out 1 forwards;
+}
+
+@keyframes galleryBodyCard {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(60px);
+        opacity: 1;
+    }
+}
+/* ///////////////////////////////////////////////////////////////////////////////////////////////// */
+/* Blog.jsx */
+.blog .blog-header{
+    background-image: url('../public/menu1.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 50vh;
+}
+.blog .blog-header .blog-header-overlay{
+    height: 100%;
+    background-color: #35353554;
+}
+.blog .blog-header span, .specificItemHeader{
+    border-bottom: 4px solid #991B1F;
+}
+.blog .blog-body .blog-body-left .details:hover::after {
+    content: '>>';
+    display: inline-block; /* لتطبيق التحريك بشكل صحيح */
+    transform: translateX(10px);
+    transition: transform 0.5s ease-in-out;
+}
+.blog .specificItemImage{
+    overflow: hidden;
+}
+.blog .specificItemImage:hover img{
+    transform: scale(1.1);
+    transition: 1s ease-in;
+}
+.blog .blogRightList{
+    list-style-type: circle;
+}
+.blog .blogRightList li::marker {
+    color: #991B1F;
+  }
+.blog .blogRightList a{
+    color: black;
+}
+.blog .blogRightList a:hover{
+    color: #991B1F;
+    font-weight: bold;
+}
+.page-link{
+    color: #991B1F;
+}
+.page-link:hover{
+    color: #991B1F;
+}
+/* تعديل الـ CSS مباشرة */
+.pagination .page-item.active .page-link {
+    background-color: #a85e60; /* لون الخلفية الأحمر */
+    border-color: #a85e60; /* نفس اللون للحدود */
+  }
+  
+/* ///////////////////////////////////////////////////////////////////////////////////////////////// */
+/* comment.js */
+.commentLeave{
+    border-bottom: 4px solid #991B1F;
+}
+/* ///////////////////////////////////////////////////////////////////////////////////////////////// */
+/* loading.js */
+.loading{
+    position: fixed;  
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+/* ////////////////////////////////////////////////////////////////////////////////////////////////////// */
+@media(max-width:570px){
+    /* Home.js */
+    .homee{
+        margin-top: 40px;
+    }
+    /* App.js */
+    .header-show-small{
+        display: block;
+    }
+    .leftSideShadow{
+        display: none;
+    }
+    .navbar{
+        margin-top: 0px;
+    }
+    .contact{
+        margin-top: 80px;
+    }
+}
